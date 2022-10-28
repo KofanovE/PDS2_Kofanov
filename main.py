@@ -1,20 +1,25 @@
+# Програма обчислює суму послідовності цифр від 0 до заданого з використанням рекурсії
+# Викладачу: збереження майстер версії файлу було не доцільне
 import random
 
-def main_function(x, sum_):
-    # Функція розрахунку суми послідовності цифр заданої кількості з використанням рекурсії
-    if x.isdigit() and 0 <= int(x) <= 20:
-        x = int(x)
-        if x > 0:
-            sum_ += x
-            x -= 1
-            main_function(str(x), sum_)
-        else:
-            print(f"Sum = {sum_} ")
-    else:
+def test_function(x):                 # Функція перевіряє, що введене число знаходиться в діапазоні від 0 до 20, або обирає рандомне число
+    if not x.isdigit() or int(x) not in range(21):
         x = random.randint(0, 20)
-        print(f"Your digit from 0 to 20 isn't right! I'm helping you: {x}")
-        main_function(str(x), sum_)
+        print(f"Digit was not right. I'm helping you: {x}")
+    return int(x)
 
+def main_function(x, sum_):          # Функція роздруковує суму послідовності чисел з використанням рекурсії
+    if x > 0:
+        sum_ += x
+        x -= 1
+        main_function(x, sum_)
+    else:
+        print(f"Sum = {sum_} ")
 
 sum_ = 0
-main_function(input("Enter your digit from 0 to 20: "), sum_)
+main_function(test_function(input("Enter your digit from 0 to 20: ")), sum_)
+
+
+
+
+
