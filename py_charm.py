@@ -1,9 +1,5 @@
-# New file created in pycharm
-print("First_change")
-print("Second_change")
+# Програма підраховування суми чисел в задоному рядку з найменшою кількістю коду
 
-# commit 2
-print("Third_change")
 
-# changes in optimized branch
-print("Change in optimized branch")
+print(sum([i for i in range(1, int(input("Enter your number from 0 to 10: "))+1)]))
+
