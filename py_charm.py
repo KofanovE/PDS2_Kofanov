@@ -1,4 +1,5 @@
 # Програма обчислює суму послідовності цифр від 0 до заданого з найменшою кількістю строк коду
+
 import random
 digit = (input("Enter your number from 0 to 10: "))
 right_digit = lambda  digit  : (digit if digit.isdigit() and 0 <= int(digit) <= 20 else random.randint(0, 20))
