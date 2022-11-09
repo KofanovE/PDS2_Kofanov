@@ -29,7 +29,7 @@ def coffe_robot():
             else:
                 break
         except ValueError:
-            print('В автомат винуте щось незрозуміле!')
+            print('В автомат вкинуте щось незрозуміле!')
             return -1
         except FalseCoin as exc:
             exc.logerror()
