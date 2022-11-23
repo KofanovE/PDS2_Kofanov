@@ -32,7 +32,9 @@ class Tree():
 
 
 
-    def min_nod(self, id_node = None):
+    def min_nod(self, id_node = None, kil = False):
+        print(id_node, kil)
+
         if not id_node:               # Якщо не заданий аргумент - пошук з корня дерева
             id_node = self.id_node
 
@@ -42,9 +44,9 @@ class Tree():
 
             elif self.left.id_node == id_node:      # Якщо ліва дочка == заданому вузлу початка пошуку - пошук відбувається з даного вузла
                 if self.left.left:                         # якщо є продовження лівої гілки, рекурсивний визов ф-Ї пошуку, відносно лівої дочки
-                    return self.left.min_nod()
+                    return self.left.min_nod(None, kil)
                 return self.left                          # Якщо у лівої дочки нема продовження лівої гілки, то мінімальний вузол - ліва дочка даного вузла
-            return self.left.min_nod(id_node)    # Продовження пошуку цільового вузла, для початку пошуку мінімального з гілки.
+            return self.left.min_nod(id_node, kil)    # Продовження пошуку цільового вузла, для початку пошуку мінімального з гілки.
 
         elif id_node > self.id_node:   # Якщо заданий аргумент більше даного вузла:
             if self.right is None:
@@ -52,15 +54,23 @@ class Tree():
 
             elif self.right.id_node == id_node:
                 if self.right.left:
-                    return self.right.min_nod()
+                    return self.right.min_nod(None, kil)
                 return self.right
-            return self.right.min_nod(id_node)
+            return self.right.min_nod(id_node, kil)
 
         else:                        # Якщо заданий аргумент == поточному вузлу:
             print(self.id_node, self.left, self.right)
             if self.left:
+                print(100, kil)
                 if self.left.left:
-                    return self.left.min_nod()
+                    print(200)
+                    return self.left.min_nod(None, kil)
+                if kil:
+                    print(300)
+                    node = self.left
+                    self.left = None
+                    print("ok")
+                    return node
                 return self.left
             else:
                 print("Fiasko")
@@ -155,15 +165,9 @@ class Tree():
 
 tree = Tree(8)
 tree.add_list([3, 1, 6, 10, 14, 13, 7, 4])
-# print(tree.max_nod())
-# print(tree.new())
-node = tree.left.right.min_nod()
-left_, right_ = tree.left.left, tree.left.right
-tree.left = node
-tree.left.left, tree.left.right = left_, right_
-print(tree.left, tree.left.left, tree.left.right)
-tree.left.right.left = None
 
-print(tree.left.right.left, tree.left.right.right)
+# print(tree.min_nod(8, ))
+print(tree.min_nod( None, True))
+print(tree.min_nod())
 
 
