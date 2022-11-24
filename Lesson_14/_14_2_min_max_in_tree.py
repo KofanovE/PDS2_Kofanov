@@ -10,6 +10,7 @@ class Tree():
         self.right = None
 
 
+
     def __str__(self):
         return str(self.id_node)
 
@@ -19,16 +20,11 @@ class Tree():
     #     if self.left:
     #         return self.left.min_nod()
     #     return self.id_node
+
     def max_nod(self):
         if self.right:
             return self.right.max_nod()
         return self.id_node
-
-
-
-
-
-
 
 
 
@@ -74,45 +70,6 @@ class Tree():
                 return self.left
             else:
                 print("Fiasko")
-
-
-
-
-
-
-    # Функція повертає мінімальне значення з будь-якої гілки дерева
-    # def min_nod(self, id_node = None):
-    #     if not id_node:               # Якщо не заданий аргумент - пошук з корня дерева
-    #         id_node = self.id_node
-    #
-    #     if id_node < self.id_node:   # Якщо заданий аргумент (стартовий вузол пошуку) менше даного вузла:
-    #         if self.left is None:           # Якщо ліва вітка відсутня  - None
-    #             return None
-    #
-    #         elif self.left.id_node == id_node:      # Якщо ліва дочка == заданому вузлу початка пошуку - пошук відбувається з даного вузла
-    #             if self.left.left:                         # якщо є продовження лівої гілки, рекурсивний визов ф-Ї пошуку, відносно лівої дочки
-    #                 return self.left.left.min_nod()
-    #             return self.left                          # Якщо у лівої дочки нема продовження лівої гілки, то мінімальний вузол - ліва дочка даного вузла
-    #         return self.left.min_nod(id_node)    # Продовження пошуку цільового вузла, для початку пошуку мінімального з гілки.
-    #
-    #     elif id_node > self.id_node:   # Якщо заданий аргумент більше даного вузла:
-    #         if self.right is None:
-    #             return None
-    #
-    #         elif self.right.id_node == id_node:
-    #             if self.right.left:
-    #                 return self.right.left.min_nod()
-    #             return self.right
-    #         return self.right.min_nod(id_node)
-    #
-    #     else:                        # Якщо заданий аргумент == поточному вузлу:
-    #         print(self.id_node, self.left, self.right)
-    #         if self.left:
-    #             if self.left.left:
-    #                 return self.left.min_nod()
-    #             return self.left
-    #         else:
-    #             print("Fiasko")
     #__________________________________________________
 
     # Method to add list od nodes

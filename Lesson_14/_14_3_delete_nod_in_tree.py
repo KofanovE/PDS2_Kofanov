@@ -142,7 +142,6 @@ class Tree():
             return self.id_node
 
 
-
     # Print the tree
     def print_tree(self):
         if self.left:
