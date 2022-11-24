@@ -128,6 +128,7 @@ class Tree():
             self.id_node = id_node
 
 
+
     # findval method to compare the id_node with nodes
     def findval(self, find_val):
         if find_val < self.id_node:

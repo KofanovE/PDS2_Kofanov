@@ -4,6 +4,7 @@ Task_1. Додайте до классу Tree метод, який реаліз�
 """
 class Tree():
 
+
     def __init__(self, id_node):
         self.id_node = id_node
         self.left = None
