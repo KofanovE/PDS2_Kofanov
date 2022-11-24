@@ -38,11 +38,13 @@ class Tree():
         if id_node < self.id_node:   # Якщо заданий аргумент (стартовий вузол пошуку) менше даного вузла:
             if self.left is None:           # Якщо ліва вітка відсутня  - None
                 return None
-
             elif self.left.id_node == id_node:      # Якщо ліва дочка == заданому вузлу початка пошуку - пошук відбувається з даного вузла
                 if self.left.left:                         # якщо є продовження лівої гілки, рекурсивний визов ф-Ї пошуку, відносно лівої дочки
+                    print("Step_1")
                     return self.left.min_nod(None, kil)
+                print("Step_2")
                 return self.left                          # Якщо у лівої дочки нема продовження лівої гілки, то мінімальний вузол - ліва дочка даного вузла
+            print("Step_3")
             return self.left.min_nod(id_node, kil)    # Продовження пошуку цільового вузла, для початку пошуку мінімального з гілки.
 
         elif id_node > self.id_node:   # Якщо заданий аргумент більше даного вузла:
@@ -51,23 +53,25 @@ class Tree():
 
             elif self.right.id_node == id_node:
                 if self.right.left:
+                    print("Step_11")
                     return self.right.min_nod(None, kil)
+                print("Step_12")
                 return self.right
+            print("Step_13")
             return self.right.min_nod(id_node, kil)
 
         else:                        # Якщо заданий аргумент == поточному вузлу:
             print(self.id_node, self.left, self.right)
             if self.left:
-                print(100, kil)
                 if self.left.left:
-                    print(200)
+                    print("Step_21")
                     return self.left.min_nod(None, kil)
                 if kil:
-                    print(300)
                     node = self.left
                     self.left = None
-                    print("ok")
+                    print("Step_22")
                     return node
+                print("Step_23")
                 return self.left
             else:
                 print("Fiasko")
@@ -125,7 +129,6 @@ tree = Tree(8)
 tree.add_list([3, 1, 6, 10, 14, 13, 7, 4])
 
 # print(tree.min_nod(8, ))
-print(tree.min_nod( None, True))
-print(tree.min_nod())
-
-
+print(tree.min_nod( 10, True))
+# print(tree.min_nod())
+tree.print_tree()
