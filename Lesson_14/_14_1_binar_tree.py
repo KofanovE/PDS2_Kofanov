@@ -16,9 +16,11 @@ class Tree():
 
     # Добавлений код.
     #__________________________________________________
+    # Method adding list nodes to tree
     def add_list(self, list_):
         for id_node in list_:
-            self.insert(id_node)
+            if type(id_node) is int and self.findval(id_node)[-9:] == "Not Found": # Перевірка того, що значення в списку нодів, що додаються - int,
+                self.insert(id_node)                                               # та даного нода нема в дереві
     #__________________________________________________
 
 
@@ -50,7 +52,7 @@ class Tree():
                 return str(find_val) + " Not Found"
             return self.right.findval(find_val)
         else:
-            print(str(self.id_node) + ' is found')
+            return str(self.id_node) + ' Is Found'
 
     # Print the tree
     def print_tree(self):
@@ -64,5 +66,5 @@ class Tree():
 
 
 tree = Tree(8)
-tree.add_list([3, 1, 6, 10, 14, 13, 7, 4])
+tree.add_list([3, 1, 6, 10, 14, 13, 7, 4, 10, 2, "cat"])
 tree.print_tree()

@@ -2,159 +2,157 @@
 Task_3. Розширте функціонал класу Tree, додавши в нього метод видалення елементів в бінарному дереві пошуку.
 """
 
-class Tree():
-
+# Клас бінарного дерева розбитий на два класа: Node і, безпосередньо Tree
+class Node:
     def __init__(self, id_node):
         self.id_node = id_node
         self.left = None
         self.right = None
 
-    def __str__(self):
-        return str(self.id_node)
+class Tree:
+    def __init__(self):
+        self.root = None
 
-
-
-    def del_node(self, id_node):
-
-        if id_node < self.id_node:   # Якщо заданий аргумент (стартовий вузол пошуку) менше даного вузла:
-            if self.left is None:           # Якщо ліва вітка відсутня  - None
-                return None
-            elif self.left == id_node:      # Якщо ліва дочка являється вузлом, що видаляється..
-                if self.left.right:              # Якщо у вузла, що видаляється є права гілка, то вузол заміщається мінімальним нодом цієї гілки
-                    left_, right_ = self.left.left, self.left.right
-                    self.left = self.left.right.min_nod(None, kil)
-                    self.left.left, self.left.right = left_, right_
-                elif self.left.left:
-                    self.left = self.left.left
-                else:
-                    self.left = None
-            else:
-                return self.left.del_node(id_node)    # Продовження пошуку цільового вузла, для початку пошуку мінімального з гілки.
-        elif id_node > self.id_node:   # Якщо заданий аргумент більше даного вузла:
-            if self.right is None:
-                return None
-            elif self.right == id_node:
-                if self.right.right:
-                    left_, right_ = self.right.left, self.right.right
-                    self.right = self.right.right.min_nod(None, kil)
-                    self.right.left, self.right.right = left_, right_
-            elif self.right.left:
-                self.right = self.right.left
-            else:
-                self.right = None
-        else:                        # Якщо заданий аргумент == поточному вузлу:
-            if self.right:
-                left_, right_ = self.left, self.right
-                self.id_node = Tree(int(self.right.min_nod(None, kil)))
-                self.left, self.right = left_, right_
-            elif self.left:
-                left_, right_ = self.left.left, self.right.left
-                self.id_node = Tree(int(self.left))
-                self.left, self.right = left_, right_
-            else:
-                tree.id_node = None
-
-
-
-    def max_nod(self):
-        if self.right:
-            return self.right.max_nod()
-        return self.id_node
-
-
-    def min_nod(self, id_node = None, kil = False):
-        print(id_node, kil)
-
-        if not id_node:               # Якщо не заданий аргумент - пошук з корня дерева
-            id_node = self.id_node
-
-        if id_node < self.id_node:   # Якщо заданий аргумент (стартовий вузол пошуку) менше даного вузла:
-            if self.left is None:           # Якщо ліва вітка відсутня  - None
-                return None
-
-            elif self.left.id_node == id_node:      # Якщо ліва дочка == заданому вузлу початка пошуку - пошук відбувається з даного вузла
-                if self.left.left:                         # якщо є продовження лівої гілки, рекурсивний визов ф-Ї пошуку, відносно лівої дочки
-                    return self.left.min_nod(None, kil)
-                return self.left                          # Якщо у лівої дочки нема продовження лівої гілки, то мінімальний вузол - ліва дочка даного вузла
-            return self.left.min_nod(id_node, kil)    # Продовження пошуку цільового вузла, для початку пошуку мінімального з гілки.
-
-        elif id_node > self.id_node:   # Якщо заданий аргумент більше даного вузла:
-            if self.right is None:
-                return None
-
-            elif self.right.id_node == id_node:
-                if self.right.left:
-                    return self.right.min_nod(None, kil)
-                return self.right
-            return self.right.min_nod(id_node, kil)
-
-        else:                        # Якщо заданий аргумент == поточному вузлу:
-            print(self.id_node, self.left, self.right)
-            if self.left:
-                print(100, kil)
-                if self.left.left:
-                    print(200)
-                    return self.left.min_nod(None, kil)
-                if kil:
-                    print(300)
-                    node = self.left
-                    self.left = None
-                    print("ok")
-                    return node
-                return self.left
-            else:
-                print("Fiasko")
+    # Добавлений код.
     #__________________________________________________
 
-    # Method to add list od nodes
+    # Модернізована ф-я пошуку нода у дереві, що повертає результат пошуку, даний нод і батьківській нод, відносно даного
+    def __find(self, node, parent, value):
+        if value == node.id_node:
+            return node, parent, True
+        if value < node.id_node:
+            if node.left:
+                return self.__find(node.left, node, value)
+        if value > node.id_node:
+            if node.right:
+                return self.__find(node.right, node, value)
+        return node, parent, False
+
+    # Ф-я видалення вузла, що не має дочірніх вузлів
+    def __del_leaf(self, s, p):
+        if p.left == s:
+            p.left = None
+        elif p.right == s:
+            p.right = None
+
+    # Ф-я видалення вузла, що має лише один дочірній вузол
+    def __del_one_child(self, s, p):
+        if p.left == s:
+            if s.left is None:
+                p.left = s.right
+            elif s.right is None:
+                p.left = s.left
+        elif p.right == s:
+            if s.left is None:
+                p.right = s.right
+            elif s.right is None:
+                p.right = s.left
+
+    # Модернізована ф-я пошуку мінімального  значення, що також повертає батьківський нод
+    def __find_min(self, node, parent):
+        if node.left:
+            return self.__find_min(node.left, node)
+        return node, parent
+
+    # Ф-я видалення даного ноду із дерева
+    def del_node(self, key):
+        s, p, fl_find = self.__find(self.root, None, key)  # Пошук наявності видаляємого ноду
+        if not fl_find:           # Якщо не знайдено - вихід із ф-ї
+            return None
+
+        if s.left is None and s.right is None:  # Видалення ноду без дочірніх вузлів
+            self.__del_leaf(s, p)
+
+        elif s.left is None or s.right is None: # Видалення ноду з єдиною дочкою
+            self.__del_one_child(s, p)
+
+        else:                                   # Видалення ноду з 2 дочками
+            sr, pr = self.__find_min(s.right, s)   # Пошук мінімального ноду і його батьківського
+            s.id_node = sr.id_node                 # Видаляємому ноду присваюється значення мінімального ноду з правої гілки
+            self.__del_one_child(sr, pr)           # Видаляється мінімальний нод ф-єю видалення ноду з можливою єдиною дочкою, адже ліва гілка у мінімального виключається
+
+    # __________________________________________________
+
+
+
+    # Method finding of min node
+    def min_nod(self, node = None):
+        if not node:
+            node = self.root
+        if node.left:
+            return self.min_nod(node.left)
+        return node.id_node
+
+
+    # Method finding of max node
+    def max_nod(self, node = None):
+        if not node:
+            node = self.root
+        if node.right:
+            return self.max_nod(node.right)
+        return node.id_node
+
+
+    # Method adding list of nodes
     def add_list(self, list_):
         for id_node in list_:
-            self.insert(id_node)
+            if type(id_node) is int:
+                t.insert(Node(id_node))
+
 
     # Insert method to create nodes
-    def insert(self, id_node):
-        if self.id_node:
-            if id_node < self.id_node:
-                if self.left is None:
-                    self.left = Tree(id_node)
-                else:
-                    self.left.insert(id_node)
-            elif id_node > self.id_node:
-                if self.right is None:
-                    self.right = Tree(id_node)
-                else:
-                    self.right.insert(id_node)
-        else:
-            self.id_node = id_node
-
+    def insert(self, obj):
+        if self.root is None:
+            self.root = obj
+            return obj
+        s, p, fl_find  = self.__find(self.root, None, obj.id_node)
+        if not fl_find and s:
+            if obj.id_node < s.id_node:
+                s.left = obj
+            else:
+                s.right = obj
+        return obj
 
 
     # findval method to compare the id_node with nodes
     def findval(self, find_val):
-        if find_val < self.id_node:
-            if self.left is None:
+        node = self.root
+        if node == None:
+            return str(find_val) + " Not Found"
+        if find_val < node.id_node:
+            if node.left is None:
                 return str(find_val) + " Not Found"
-            return self.left.findval(find_val)
-        elif find_val > self.id_node:
-            if self.right is None:
+            return self.findval(node.left)
+        elif find_val > node.id_node:
+            if node.right is None:
                 return str(find_val) + " Not Found"
-            return self.right.findval(find_val)
+            return self.findval(node.right)
         else:
-            return self.id_node
+            return str(node.id_node) + " Is Found"
 
 
     # Print the tree
-    def print_tree(self):
-        if self.left:
-            self.left.print_tree()
-        if self.id_node:
-            print(self.id_node),
-        if self.right:
-            self.right.print_tree()
+    def print_tree(self, node = None):
+        if node is None:
+            node = self.root
+            if node is None:
+                return None
+        if node.left:
+            self.print_tree(node.left)
+        if node.id_node:
+            print(node.id_node)
+        if node.right:
+            self.print_tree(node.right)
 
-tree = Tree(8)
-tree.add_list([3, 1, 6, 10, 14, 13, 7, 4])
-# print(tree.max_nod())
-# print(tree.min_nod())
-# tree.del_node(10)
-tree.print_tree()
+
+v = [10, 5, 7, 16, 13, 2, 20, "cat", 20]
+t = Tree()
+t.add_list(v)
+
+t.del_node(10)
+t.print_tree()
+print(f"min: {t.min_nod()}")
+print(f"max: {t.max_nod()}")
+t.insert(Node(25))
+t.print_tree()
+print(f"max: {t.max_nod()}")
