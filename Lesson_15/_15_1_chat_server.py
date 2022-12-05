@@ -50,7 +50,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
                 reply = f'Unknown digit..'
                 conn.send(bytes(f'***If you want actual price ETH - press 1*** Bot:  {reply}', encoding='UTF-8'))
         else :
-            logger.warning(f"Connect the operator..")
+            logger.warning(f"Connect the operator...")
 
             reply = f'Connect the operator! Waiting time is {n} hours.'
             conn.send(bytes(f'***If you want actual price ETH - press 1*** Bot:  {reply}', encoding='UTF-8'))
