@@ -1,0 +1,8 @@
+/*
+Напишіть запит, щоб отримати всі відомості про співробітників із таблиці employee упорядковано за іменами за зростанням
+*/
+
+USE pds;
+SELECT *
+FROM employees
+ORDER BY last_name, first_name;

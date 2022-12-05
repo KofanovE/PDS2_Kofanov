@@ -1,0 +1,7 @@
+/*
+Напишіть запит, щоб отримати загальну суму заробітної плати всіх співробітників
+*/
+
+USE pds;
+SELECT SUM(salary) AS total_salary
+FROM employees;

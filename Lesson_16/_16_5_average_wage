@@ -1,0 +1,7 @@
+/*
+Напишіть запит, щоб отримати середню заробітну плату та кількість працівників у таблиці employee
+*/
+
+USE pds;
+SELECT ROUND(AVG(salary), 2) AS average_salary, COUNT(employee_id) AS count_employees
+FROM employees;
