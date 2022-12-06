@@ -1,3 +1,10 @@
 /*
 Напишіть запит, щоб отримати кількість працівників з тією самою роботою.
 */
+
+USE pds;
+SELECT DISTINCT job_id AS distinct_jobs, COUNT(employee_id) AS count_employees
+FROM employees
+GROUP BY distinct_jobs;
+
+

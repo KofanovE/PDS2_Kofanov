@@ -1,3 +1,7 @@
 /*
 Напишіть запит, щоб перерахувати кількість вакансій, доступних у таблиці employee.
 */
+
+USE pds;
+SELECT COUNT(DISTINCT job_id) AS count_jobs
+FROM employees;

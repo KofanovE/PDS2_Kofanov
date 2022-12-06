@@ -1,3 +1,8 @@
 /*
 Напишіть запит, щоб отримати середню заробітну плату та кількість працівників відділу 90.
 */
+
+USE pds;
+SELECT ROUND(AVG(salary), 2) AS average_salary_90, COUNT(employee_id) AS count_employees_90
+FROM employees
+WHERE department_id = 90;
