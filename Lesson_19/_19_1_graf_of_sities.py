@@ -12,7 +12,7 @@ with open("cities.csv") as file:
 
 graph = nx.Graph()
 for edge in edgelist:
-    graph.add_edge(edge[0], edge[1], distance = edge[2])
+    graph.add_edge(edge[0], edge[1], weight = int(edge[2]))
 
 pos = nx.spring_layout(graph)
 nx.draw_networkx(graph, pos)
