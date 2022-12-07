@@ -11,7 +11,7 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-mycursor.execute("CREATE TABLE student(id INT, name VARCHAR(255))")
+mycursor.execute("CREATE TABLE student_test(id INT, name VARCHAR(255))")
 
 mycursor.close()
 mydb.close()

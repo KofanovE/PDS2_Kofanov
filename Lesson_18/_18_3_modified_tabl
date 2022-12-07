@@ -1,4 +1,0 @@
-/*
-Напишіть програму, яка створить у базі 'my_first_db', таблицю 'employee', з полями 'id'(INT AUTO_INCREMENT PRIMARY KEY)
-'name'(VARCHAR(255)), 'salary' (INT(6)).
-*/
