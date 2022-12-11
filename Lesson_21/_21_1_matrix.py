@@ -26,23 +26,45 @@ class MatrixClass:
     def __str__(self):
         return self.matrix
 
-    def __result_matrix(self):
-        result = [[]]
-        for i in self.matrix:
 
 
 
     def __add_digit(self, obj_2):
-
+        result = []
+        for i in range(len(self.matrix)):
+            result.append([])
+            for j in self.matrix[i]:
+                result[i].append(self.matrix[i][j] + obj_2)
+        return MatrixClass(result)
 
     def __sub_digit(self, obj_2):
-        pass
+        result = []
+        for i in range(len(self.matrix)):
+            result.append([])
+            for j in self.matrix[i]:
+                result[i].append(self.matrix[i][j] - obj_2)
+        return MatrixClass(result)
 
     def __mul_digit(self, obj_2):
-        pass
+        result = []
+        for i in range(len(self.matrix)):
+            result.append([])
+            for j in self.matrix[i]:
+                result[i].append(self.matrix[i][j] * obj_2)
+        return MatrixClass(result)
 
     def __del_digit(self, obj_2):
-        pass
+        try:
+            result = []
+            for i in range(len(self.matrix)):
+                result.append([])
+                for j in self.matrix[i]:
+                    result[i].append(self.matrix[i][j] + obj_2)
+            return MatrixClass(result)
+        except ZeroDivisionError:
+            print("Error: divisor is zero!")
+            return None
+
 
     def __add_matrix(self, obj_2):
         pass
@@ -94,7 +116,8 @@ list_ = [[1, 2, 3], [4, 5, 6]]
 matrix_ = MatrixClass(list_)
 matrix_2 = MatrixClass(list_)
 print(matrix_.__str__())
-print(type(matrix_))
+print(type(matrix_.matrix))
 # matrix_.operations(matrix_2, "+")
+
 
 
