@@ -33,7 +33,7 @@ class MatrixClass:
         result = []
         for i in range(len(self.matrix)):
             result.append([])
-            for j in self.matrix[i]:
+            for j in range(len(self.matrix[i])):
                 result[i].append(self.matrix[i][j] + obj_2)
         return MatrixClass(result)
 
@@ -41,7 +41,7 @@ class MatrixClass:
         result = []
         for i in range(len(self.matrix)):
             result.append([])
-            for j in self.matrix[i]:
+            for j in range(len(self.matrix[i])):
                 result[i].append(self.matrix[i][j] - obj_2)
         return MatrixClass(result)
 
@@ -49,7 +49,7 @@ class MatrixClass:
         result = []
         for i in range(len(self.matrix)):
             result.append([])
-            for j in self.matrix[i]:
+            for j in range(len(self.matrix[i])):
                 result[i].append(self.matrix[i][j] * obj_2)
         return MatrixClass(result)
 
@@ -58,7 +58,7 @@ class MatrixClass:
             result = []
             for i in range(len(self.matrix)):
                 result.append([])
-                for j in self.matrix[i]:
+                for j in range(len(self.matrix[i])):
                     result[i].append(self.matrix[i][j] + obj_2)
             return MatrixClass(result)
         except ZeroDivisionError:
@@ -81,30 +81,32 @@ class MatrixClass:
     def operations(self, obj_2, oper):
         if type(obj_2) == MatrixClass:
             if oper == "+":
-                self.__add_matrix(obj_2)
+                result = self.__add_matrix(obj_2)
             elif oper == "-":
-                self.__sub_matrix(obj_2)
+                result = self.__sub_matrix(obj_2)
             elif oper == "*":
-                self.__mul_matrix(obj_2)
+                result = self.__mul_matrix(obj_2)
             elif oper == "/":
-                self.__del_matrix(obj_2)
+                result = self.__del_matrix(obj_2)
             else:
                 print("unknown operation")
                 return None
         elif type(obj_2) == int or type(obj_2) == float:
             if oper == "+":
-                self.__add_digit(obj_2)
+                result = self.__add_digit(obj_2)
             elif oper == "-":
-                self.__sub_digit(obj_2)
+                result = self.__sub_digit(obj_2)
             elif oper == "*":
-                self.__mul_digit(obj_2)
+                result = self.__mul_digit(obj_2)
             elif oper == "/":
-                self.__del_digit(obj_2)
+                result = self.__del_digit(obj_2)
             else:
                 print("unknown operation")
                 return None
         else:
             print("object from operation with matrix must be digit or matrix")
+            return None
+        return result
 
     def tranponation(self):
         pass
@@ -118,6 +120,8 @@ matrix_2 = MatrixClass(list_)
 print(matrix_.__str__())
 print(type(matrix_.matrix))
 # matrix_.operations(matrix_2, "+")
+result = matrix_2.operations(2, '*')
+print(result.matrix)
 
 
 
