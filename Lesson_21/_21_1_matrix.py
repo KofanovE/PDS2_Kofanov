@@ -8,21 +8,21 @@ class MatrixClass:
     def __init__(self, obj):
         try:
             for i in range(len(obj)):
-                if type(obj) == list and type(obj[i]) == list: #chek, that entered object is list of lists
+                if type(obj) == list and type(obj[i]) == list:       #check, that entered object is list of lists
                     if obj == [[]]:
                         self.matrix = [[]]
                         return None
                     for j in obj[i]:
-                        if not (type(j) == int or type(j) == float): #chek, that lists are including int or float digits
+                        if not (type(j) == int or type(j) == float): #check, that lists are including int or float digits
                             print("all elements of matrix must be digits")
                             self.matrix = [[]]
                             return None
-                    self.matrix = obj #else, matrix is entered list of lists
-                else: # else not list of lists, created matrix is empty
+                    self.matrix = obj                                #else, matrix is create of entered list of lists
+                else:                                                # else, if there is no list of lists, created matrix is empty
                     print("obj isn't list of lists")
                     self.matrix = [[]]
                     return None
-        except TypeError: # if not interate objects, matrix is empty
+        except TypeError:                                            # if, there is not interated object, matrix is empty
             print("obj isn't list of lists")
             self.matrix = [[]]
 
@@ -30,8 +30,9 @@ class MatrixClass:
         return self.matrix
 
 
-    def __matching(self, obj_2): # method om matching two matrix
-        lines = len(self.matrix) - len(obj_2.matrix) # matching lines
+    def __matching(self, obj_2):
+                                                                      # method om matching two matrices
+        lines = len(self.matrix) - len(obj_2.matrix)                  # matching lines
         if lines > 0:
             for i in range(lines):
                 obj_2.matrix.append([])
@@ -39,14 +40,15 @@ class MatrixClass:
             for i in range(lines * (-1)):
                 self.matrix.append([])
 
-        for i in range(len(self.matrix)): # matching columns
+        for i in range(len(self.matrix)):                             # matching columns
             columns = len(self.matrix[i]) - len(obj_2.matrix[i])
             if columns > 0:
                 for j in range(columns):
                     obj_2.matrix[i].append(0)
             elif columns < 0:
                 for j in range(columns * (-1)):
-                    self.matrix[i].append(0)
+                    self.matrix[i].append(0)                         # checking for missing elements
+
         num_members = 0
         for i in range(len(self.matrix)):
             if num_members < len(self.matrix[i]) or num_members < len(obj_2.matrix[i]):
@@ -62,6 +64,7 @@ class MatrixClass:
 
 
     def __add_digit(self, obj_2):
+        # method of adding digit to matrix
         if self.matrix == [[]]:
             return None
         result = []
@@ -74,6 +77,7 @@ class MatrixClass:
 
 
     def __sub_digit(self, obj_2):
+        # method of subtracion digit from matrix
         if self.matrix == [[]]:
             return None
         result = []
@@ -85,6 +89,7 @@ class MatrixClass:
 
 
     def __mul_digit(self, obj_2):
+        # method of multiply digit to matrix
         if self.matrix == [[]]:
             return None
         result = []
@@ -96,6 +101,7 @@ class MatrixClass:
 
 
     def __add_matrix(self, obj_2):
+        # method of adding two matrices
         self.__matching(obj_2)
         result = []
         for i in range(len(self.matrix)):
@@ -106,6 +112,7 @@ class MatrixClass:
 
 
     def __sub_matrix(self, obj_2):
+        # method of subtraction two matrices
         self.__matching(obj_2)
         result = []
         for i in range(len(self.matrix)):
@@ -115,6 +122,7 @@ class MatrixClass:
         self.matrix = result
 
     def __mul_matrix(self, obj_2):
+        # method of multiply two matrices
         if len(self.matrix[0]) != len(obj_2.matrix):
             print("Imposible to multiply these matrixes!")
             return None
@@ -131,6 +139,7 @@ class MatrixClass:
 
 
     def operations(self, obj_2, oper):
+        # main method of operation with marix
         if type(obj_2) == MatrixClass:
             if oper == "+":
                 self.__add_matrix(obj_2)
@@ -157,6 +166,7 @@ class MatrixClass:
 
 
     def tranponation(self):
+        # method of tranponation the matrix
         columns = 0
         lines = 0
         if len(self.matrix) > len(self.matrix[0]):
@@ -185,19 +195,18 @@ class MatrixClass:
                     self.matrix[i].pop()
 
 
-try:
-    list_1 = [[1, 2, 3, 11, 12, 13], [4, 5, 6, 14, 15, 16]]
-    list_2 = [[1, 2], [4, 5], [7, 8]]
-    matrix_ = MatrixClass(list_1)
-    matrix_2 = MatrixClass(list_2)
-    print(matrix_.__str__())
-    print(matrix_2.__str__())
-    # matrix_.operations(matrix_2, "*")
-    #
-    # print(f"\n"*2)
 
-    matrix_2.tranponation()
-    print(matrix_2.__str__())
+list_1 = [[1, 2, 3, 11, 12, 13], [4, 5, 6, 14, 15, 16]]
+list_2 = [[1, 2], [4, 5], [7, 8]]
+list_3 = [[3, 4, 5], [5, 6, 7]]
+matrix_1 = MatrixClass(list_1)
+matrix_2 = MatrixClass(list_2)
+matrix_3 = MatrixClass(list_3)
+print("Matrix first: ", matrix_1.__str__())
+print("Matrix second: ", matrix_2.__str__())
+print("Matrix third: ", matrix_3.__str__())
+matrix_2.operations(matrix_3, "*")
+print("Matrix_2 after multiply on matrix_3: ", matrix_2.__str__())
+matrix_1.tranponation()
+print("Matrix_1 after transopation: ", matrix_1.__str__())
 
-except AttributeError:
-    None
