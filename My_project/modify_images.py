@@ -4,7 +4,7 @@ from skimage import io
 from skimage import exposure
 
 input_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/dataset_train'
-output_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/test_modify'
+output_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/dataset_modify'
 
 
 
