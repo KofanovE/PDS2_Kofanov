@@ -9,13 +9,10 @@ output_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_projec
 
 
 for categoria_folder in os.listdir(output_folder):
-    print("categoriafolder: ", categoria_folder)
-    print("output folder: ", output_folder)
+
     # Проходимся по каждому файлу в папке "input"
     carent_folder = os.path.join(output_folder, categoria_folder)
     folders = os.listdir(os.path.join(output_folder, categoria_folder))
-    print("folders:", folders)
-    print("curent folder: ",carent_folder)
     for filename in folders:
         # Извлекаем расширение файла
         ext = os.path.splitext(filename)[1]
@@ -57,3 +54,26 @@ for categoria_folder in os.listdir(output_folder):
 
 
 
+# ___________________________________________________________________________________________________________________
+
+# def change_image(filename, carent_folder, save_folder=None):
+#
+#
+#     # Отримуємо розширення файлу
+#     ext = os.path.splitext(filename)[1]
+#     # Якщо розширення не .jpg, конвертируємо зображення в формат .jpg
+#     if ext != '.jpg':
+#         with Image.open(os.path.join(carent_folder, filename)) as img:
+#             img = img.convert('RGB')
+#             filename = os.path.splitext(filename)[0] + '.jpg'
+#             img.save(os.path.join(carent_folder, filename), 'JPEG')
+#
+#     # Открываем изображение и изменяем его размер до 227х227
+#     with Image.open(os.path.join(carent_folder, filename)) as img:
+#         img = img.resize((227, 227))
+#         # Преобразуем изображение в оттенки серого
+#         img = img.convert('L')
+#         # Збереження зображення
+#         if save_folder:
+#             path_to_folder = os.path.join(save_folder, categoria_folder)
+#         img.save(os.path.join(path_to_folder, filename))
