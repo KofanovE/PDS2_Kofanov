@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-data_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Data_images'
+data_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/dataset_train'
 
 
 
