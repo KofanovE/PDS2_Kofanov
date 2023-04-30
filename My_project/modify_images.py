@@ -26,8 +26,10 @@ for categoria_folder in os.listdir(output_folder):
         # Открываем изображение и изменяем его размер до 227х227
         with Image.open(os.path.join(carent_folder, filename)) as img:
             img = img.resize((227, 227))
+
             # Преобразуем изображение в оттенки серого
-            img = img.convert('L')
+            img = img.convert('RGB')
+            # img = img.convert('L')
 
             # Сохраняем изображение в папку "output"
             path_to_folder = os.path.join(output_folder, categoria_folder)
