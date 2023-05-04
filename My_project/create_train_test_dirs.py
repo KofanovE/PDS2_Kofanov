@@ -6,13 +6,13 @@ import shutil
 test_size = 0.2
 
 # Путь к папке с исходными изображениями
-source_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Example/dataset_parser'
+source_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Datasets/dataset_parser'
 
 # Путь к папке, в которую будут сохранены изображения для обучения модели
-train_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Example/train_dataset'
+train_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Datasets/train_dataset'
 
 # Путь к папке, в которую будут сохранены изображения для тестирования модели
-test_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Example/test_dataset'
+test_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Datasets/test_dataset'
 
 shutil.rmtree(train_dir)
 shutil.rmtree(test_dir)

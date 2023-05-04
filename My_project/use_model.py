@@ -4,16 +4,23 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 import numpy as np
 import os
 
-model_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Results/fruit_classifier_color_5.h5'
-test_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/dataset_test'
+model_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Results/fruit_classifier_ResNet50_50.h5'
+test_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Old_datasets/dataset_test'
 
 # '/apples/Яблуко_1.jpg'
-# '/banana/Банан_1.jpg'
-# '/carrot/Морква_1.jpg'
 # '/avocado/Авокадо_1.jpg'
+# '/banana/Банан_1.jpg'
 # '/beets/Буряк_1.jpg'
+# '/bell pepper/Перець солодкий_1.jpg'
+# '/carrot/Морква_1.jpg'
+# '/champignon/Печериці_1.jpg'
+# '/cucumber/Огірок_1.jpg'
+# '/garlic/Часник_1.jpg'
+# '/ginger/Імбір_1.jpg'
+# '/grapefruit/Грейпфрут_1.jpg'
+# '/grapes/Виноград_1.jpg'
 
-test_fruit = '/avocado/Авокадо_1.jpg'
+test_fruit = '/cucumber/Огірок_1.jpg'
 # Загрузка сохраненной модели
 model = load_model(model_folder)
 

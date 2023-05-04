@@ -79,7 +79,7 @@ for library in library_list:
     num_library += 1
     for n in range(len(library)):
         path_to_folder = os.path.join(data_folder, fruit_n_vegetables_eng[n])
-        scrape_images(library[n], 10000, path_to_folder, num_library)
+        scrape_images(library[n], 100, path_to_folder, num_library)
 
 
 

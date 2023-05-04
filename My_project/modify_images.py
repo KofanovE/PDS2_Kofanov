@@ -4,7 +4,7 @@ from skimage import io
 from skimage import exposure
 
 input_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/dataset_train'
-output_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/dataset_modify'
+output_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Old_datasets/dataset_test'
 
 
 
@@ -43,39 +43,15 @@ for categoria_folder in os.listdir(output_folder):
         io.imsave(os.path.join(path_to_folder, filename), normalized_image)
 
 
-        img = Image.open(os.path.join(path_to_folder, filename))
-        # поворачиваем изображение на 90 градусов
-        rotated_img = img.rotate(90)
-        rotated_img.save(os.path.join(path_to_folder, 'rotated_90_'+filename))
-        # поворачиваем изображение на 180 градусов
-        rotated_img = img.rotate(180)
-        rotated_img.save(os.path.join(path_to_folder, 'rotated_180_'+filename))
-        # поворачиваем изображение на 270 градусов
-        rotated_img = img.rotate(270)
-        rotated_img.save(os.path.join(path_to_folder, 'rotated_270_'+filename))
+        # img = Image.open(os.path.join(path_to_folder, filename))
+        # # поворачиваем изображение на 90 градусов
+        # rotated_img = img.rotate(90)
+        # rotated_img.save(os.path.join(path_to_folder, 'rotated_90_'+filename))
+        # # поворачиваем изображение на 180 градусов
+        # rotated_img = img.rotate(180)
+        # rotated_img.save(os.path.join(path_to_folder, 'rotated_180_'+filename))
+        # # поворачиваем изображение на 270 градусов
+        # rotated_img = img.rotate(270)
+        # rotated_img.save(os.path.join(path_to_folder, 'rotated_270_'+filename))
 
 
-
-# ___________________________________________________________________________________________________________________
-
-# def change_image(filename, carent_folder, save_folder=None):
-#
-#
-#     # Отримуємо розширення файлу
-#     ext = os.path.splitext(filename)[1]
-#     # Якщо розширення не .jpg, конвертируємо зображення в формат .jpg
-#     if ext != '.jpg':
-#         with Image.open(os.path.join(carent_folder, filename)) as img:
-#             img = img.convert('RGB')
-#             filename = os.path.splitext(filename)[0] + '.jpg'
-#             img.save(os.path.join(carent_folder, filename), 'JPEG')
-#
-#     # Открываем изображение и изменяем его размер до 227х227
-#     with Image.open(os.path.join(carent_folder, filename)) as img:
-#         img = img.resize((227, 227))
-#         # Преобразуем изображение в оттенки серого
-#         img = img.convert('L')
-#         # Збереження зображення
-#         if save_folder:
-#             path_to_folder = os.path.join(save_folder, categoria_folder)
-#         img.save(os.path.join(path_to_folder, filename))
