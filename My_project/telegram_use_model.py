@@ -45,31 +45,3 @@ def fruit_prediction(test_fruit, model_folder):
     # print(pred_class_name)
     return pred_class_name
 
-
-
-if __name__ == '__main__':
-
-    # шлях до директорії, де знаходиться модель
-    model_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Results/fruit_classifier_ResNet50_50.h5'
-
-    # шлях до директорії, де знаходяться не використанні в навчанні дані
-    test_dir = '/My_project/Old_datasets/dataset_test'
-
-    # '/apples/Яблуко_1.jpg'
-    # '/avocado/Авокадо_1.jpg'
-    # '/banana/Банан_1.jpg'
-    # '/beets/Буряк_1.jpg'
-    # '/bell pepper/Перець солодкий_1.jpg'
-    # '/carrot/Морква_1.jpg'
-    # '/champignon/Печериці_1.jpg'
-    # '/cucumber/Огірок_1.jpg'
-    # '/garlic/Часник_1.jpg'
-    # '/ginger/Імбір_1.jpg'
-    # '/grapefruit/Грейпфрут_1.jpg'
-    # '/grapes/Виноград_1.jpg'
-
-    # назва директорії і зображення для перевірки моделі на практиці
-    test_fruit = '/cucumber/Огірок_1.jpg'
-
-    # виконання функції класифікації фруктів та овочів
-    fruit_prediction(test_fruit, test_dir, model_folder)
