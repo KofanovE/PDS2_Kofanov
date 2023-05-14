@@ -4,7 +4,7 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 import numpy as np
 import os
 
-model_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Results/fruit_classifier_ResNet50_50.h5'
+model_folder = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Results/fruit_classifier_ResNet50_100_full.h5'
 test_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Old_datasets/dataset_test'
 
 # '/apples/Яблуко_1.jpg'
@@ -20,7 +20,7 @@ test_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Old
 # '/grapefruit/Грейпфрут_1.jpg'
 # '/grapes/Виноград_1.jpg'
 
-test_fruit = '/cucumber/Огірок_1.jpg'
+test_fruit = '/grapefruit/Грейпфрут_1.jpg'
 # Загрузка сохраненной модели
 model = load_model(model_folder)
 

@@ -82,27 +82,27 @@ def train_n_test_model(train_dir, test_dir, path_to_save):
               steps_per_epoch=train_generator.samples // batch_size,
               validation_data=test_generator,
               validation_steps=test_generator.samples // batch_size,
-              epochs=50)
+              epochs=100)
 
     # визначення і відображення якості моделі з допомогою тестового набору даних
     accuracy = model.evaluate(test_generator)[1]
     print('Accuracy:', accuracy)
 
     # збереження моделі в заданій директорії
-    model.save(path_to_save + '/fruit_classifier_ResNet50_50.h5')
+    model.save(path_to_save + '/fruit_classifier_ResNet50_100_full.h5')
 
 
 
 if __name__ == '__main__':
 
     # шлях до директорії з даними навчальної вибірки
-    train_dir = '/My_project/Datasets/train_dataset'
+    train_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Datasets/dataset_parser'
 
     # шлях до директорії з даними тестової вибірки
-    test_dir = '/My_project/Datasets/test_dataset'
+    test_dir = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Datasets/dataset_test_full'
 
     # шлях до директорії для збереження отриманої моделі
-    path_to_save = '/My_project/Results'
+    path_to_save = 'C:/Users/админ/PycharmProjects/PDS2/PDS2_Kofanov/My_project/Results'
 
     # створення моделі класифікації
     train_n_test_model(train_dir, test_dir, path_to_save)
